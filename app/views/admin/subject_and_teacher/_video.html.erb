@@ -1,0 +1,19 @@
+<table>
+	<caption></caption>
+	<tr>
+		<th>Subject</th>
+		<th>Title</th>
+		<th>Description</th>
+		<th>Video link</th>
+		<th>Actions</th>
+	</tr>
+	<%locals[:videos]&.each do |videos|%>
+	  <tr>
+	  	<td><%= BxBlockCatalogue::Subject.find_by(id: videos.subject_id).subject_name %></td>
+	  	<td><%= videos.title%></td>
+	  	<td><%= videos.description%></td>
+	  	<td><%= link_to 'Watch Video', videos.video, target: '_blank' %></td>
+	    <td> <%= link_to "Edit", edit_admin_video_lecture_url(videos)%> <%= link_to "View", admin_video_lecture_url(videos)%> <%= link_to "Delete", admin_video_lecture_url(videos), method: :delete%></td>
+	  </tr>
+	<% end %>
+</table>

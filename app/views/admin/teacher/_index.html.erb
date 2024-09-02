@@ -1,0 +1,25 @@
+<table>
+	<caption></caption>
+	<tr>
+		<th>name</th>
+		<th>email</th>
+		<th>phone number</th>
+		<th>school</th>
+		<th>role</th>
+		<th>teacher unique Id</th>
+		<th>department</th>
+		<th>Actions</th>
+	</tr>
+	<%locals[:teachers].each do |teacher|%>
+	  <tr>
+	  	<td><%= teacher.first_name%></td>
+	    <td><%= teacher.email%></td>
+	    <td><%= teacher.full_phone_number%></td>
+	    <td><%= teacher.school.name%></td>
+	    <td><%= teacher.role.name%></td>
+	    <td><%= teacher.teacher_unique_id%></td>
+	    <td><%= teacher.department %> </td>
+	    <td> <%= link_to "Edit", edit_admin_teacher_url(teacher, school_id: teacher.school_id)%> <%= link_to "View", admin_teacher_url(teacher)%> <%= link_to "Delete", admin_teacher_url(teacher), method: :delete%></td>
+	  </tr>
+	<% end %>
+</table>

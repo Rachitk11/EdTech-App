@@ -1,0 +1,18 @@
+<table>
+	<caption></caption>
+	<tr>
+		<th>name</th><th>Guardian email</th><th>phone number</th><th>school</th><th>role</th><th>Student Unique Code</th><th>Actions</th>
+	</tr>
+
+	<%locals[:students].each do |student|%>
+	  <tr>
+	  	<td><%= student.first_name%></td>
+	    <td><%= student.guardian_email%></td>
+	    <td><%= student.full_phone_number%></td>
+	    <td><%= student.school.name%></td>
+	    <td><%= student.role.name%></td>
+	    <td><%= student.student_unique_id%></td>
+	    <td> <%= link_to "Edit", edit_admin_student_url(student)%> <%= link_to "View", admin_student_url(student)%> <%= link_to "Delete", admin_student_url(student), method: :delete%></td>
+	  </tr>
+	<% end %>
+</table>

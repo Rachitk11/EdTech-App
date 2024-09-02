@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+
+    <p>
+     Account Created Sucessfully
+    </p>
+    <% if @account.role&.name == "Publisher" %>
+    <p> You Added as a Publisher </p>
+    <p>Publication_House_Name - <%= @account.publication_house_name %></p>
+    <p>Phone Num.- <%= @account.full_phone_number %> </p><br>
+    <p>Email - <%= @account.email %></p>
+    
+  <% elsif @account.role&.name == "Student" %>
+  <p>You Added as as Student</p>
+    <p>Studnet Uniq Id- <%= @account.student_unique_id %></p> 
+    <p>School Name- <%= @account.school&.name %> <br></p>
+    <p>Name- <%= @account.first_name %><br> </p>
+    <p>Guardian Mail- <%= @account.guardian_email %></p> <br>
+    <p>Guardian Contact Num.- <%= @account.full_phone_number %>
+
+  <% elsif @account.role&.name == "Teacher" %>
+  <p>You Added as a Teacher</p>
+    <p>Account_id- <%= @account.first_name %></p> 
+    <p>School Name- <%= @account.school&.name %> <br></p>
+    <p>teacher Unique Id- <%= @account.teacher_unique_id %></p>
+    <p>Email- <%= @account.email %></p>
+    <p>Phone Num.- <%= @account.full_phone_number %></p>
+
+  <% else %>
+  <p>You Added as a School Admin</p>
+  <p>Name- <%= @account.first_name %><br> </p>
+  <p>School Name- <%= @account.school&.name %> <br></p>
+  <p>Email- <%= @account.email %></p>
+  <p>Phone Num.- <%= @account.full_phone_number %> </p><br>
+  <% end %>
+  </body>
+</html>

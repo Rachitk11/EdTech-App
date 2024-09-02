@@ -1,0 +1,9 @@
+---
+:concurrency: 5
+production:
+  :concurrency: 20
+:queues:
+  - critical
+  - default
+  - mailers
+  - low

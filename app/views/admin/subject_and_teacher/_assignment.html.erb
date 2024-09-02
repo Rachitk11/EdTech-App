@@ -1,0 +1,25 @@
+<table>
+	<caption></caption>
+	<tr>
+		<th>Subject</th>
+		<th>Title</th>
+		<th>Description</th>
+		<th>Assignments</th>
+		<th>Actions</th>
+	</tr>
+	<%locals[:assignments]&.each do |assignment|%>
+	  <tr>
+	  	<td><%= BxBlockCatalogue::Subject.find_by(id: assignment.subject_id).subject_name %></td>
+	  	<td><%= assignment.title%></td>
+	  	<td><%= assignment.description%></td>
+	  	<td>
+        <% if assignment.assignment.attached? %>
+          <%= link_to "Download", rails_blob_path(assignment.assignment, disposition: "attachment") %>
+        <% else %>
+          No PDF attached
+        <% end %>
+	     </td>
+	    <td> <%= link_to "Edit", edit_admin_assignment_url(assignment)%> <%= link_to "View", admin_assignment_url(assignment)%> <%= link_to "Delete", admin_assignment_url(assignment), method: :delete%></td>
+	  </tr>
+	<% end %>
+</table>

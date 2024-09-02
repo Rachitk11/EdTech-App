@@ -1,0 +1,46 @@
+<div style="text-align: center;"><strong><%= invoice.order.company.name%></strong></div><br>
+
+<div style="text-align: center;"><%= invoice.company_address%></div>
+
+<div style="text-align: center;"><%= invoice.company_city%> <%= invoice.company_zip_code%></div><br>
+
+<div style="text-align: center;"><strong>Invoice for <%= invoice.invoice_date&.strftime("%B, %Y")%></strong></div><br>
+
+<div style="text-align: center;"><strong><%= invoice.order.customer_name%></strong></div>
+
+<hr>
+
+<p>Order Number:  <%= invoice.order.order_number%></p>
+
+<p>Billing Name:  <%= invoice.bill_to_name%></p>
+
+<p>Billing Address:  <%= invoice.bill_to_address%></p>
+
+<hr>
+
+<table style="border:1px solid black;width:100%;">
+  <caption>Invoice Pdf</caption>
+
+  <thead>
+  <tr>
+    <th style="border:1px solid black;"><span contenteditable>Item ID</span></th>
+    <th style="border:1px solid black;"><span contenteditable>Item name</span></th>
+    <th style="border:1px solid black;"><span contenteditable>Price</span></th>
+  </tr>
+  </thead>
+  <tbody>
+
+  <%invoice.order.items.each do |item|%>
+    <tr>
+      <td style="border:1px solid black;"><a class="cut">-</a><span contenteditable><%= item.id%></span></td>
+      <td style="border:1px solid black;"><span contenteditable><%= item.item_name%></span></td>
+      <td style="border:1px solid black;"><span data-prefix>$</span><span contenteditable><%= item.item_unit_price%></span></td>
+    </tr>
+  <%end%>
+  <tr>
+    <td style="border:1px solid black;"><a class="cut">-</a><span contenteditable>Total Amount</span></td>
+    <td style="border:1px solid black;"><span contenteditable></span></td>
+    <td style="border:1px solid black;"><span data-prefix>$</span><span contenteditable><%= invoice.total_amount%></span></td>
+  </tr>
+  </tbody>
+</table>

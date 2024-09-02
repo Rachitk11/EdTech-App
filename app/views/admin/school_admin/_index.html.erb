@@ -1,0 +1,20 @@
+<table>
+	<caption></caption>
+	<tr>
+		<th>email</th><th>name</th><th>school</th><th>role</th><th>phone_number</th><th>Actions</th>
+	</tr>
+	<%locals[:school_admins].each do |school_admin|%>
+	  <tr>
+	  	<td><%= school_admin.email%></td>
+	    <td><%= school_admin.first_name%></td>
+	    <td><%= school_admin.school.name%></td>
+	    <td><%= school_admin.role.name%></td>
+	    <td><%= school_admin.full_phone_number%></td>
+	    <td> 
+			<%= link_to "Edit", edit_admin_school_admin_url(school_admin, params: {school_id: school_admin.school_id}) if Ability.new(current_admin_user).can?(:update, AccountBlock::Account.new(role: BxBlockRolesPermissions::Role.new(name: "School Admin")))%>
+			<%= link_to "View", admin_school_admin_url(school_admin) if Ability.new(current_admin_user).can?(:read, AccountBlock::Account.new(role: BxBlockRolesPermissions::Role.new(name: "School Admin"))) %>
+			<%= link_to "Delete", admin_school_admin_url(school_admin), method: :delete  if Ability.new(current_admin_user).can?(:destroy, AccountBlock::Account.new(role: BxBlockRolesPermissions::Role.new(name: "School Admin")))%>
+		</td>
+	  </tr>
+	<% end %>
+</table>

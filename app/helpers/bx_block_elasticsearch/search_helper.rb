@@ -1,0 +1,2 @@
+module BxBlockElasticsearch::SearchHelper
+end

@@ -1,0 +1,12 @@
+<table>
+	<caption></caption>
+	<tr>
+		<th>division name</th><th>Actions</th>
+	</tr>
+	<%locals[:class_divisions]&.each do |class_division|%>
+	  <tr>
+	  	<td><%= class_division.division_name%></td>
+	    <td> <%= link_to "Edit", edit_admin_class_division_url(class_division, params: {school_id: class_division.school_id})%> <%= link_to "View", admin_class_division_url(class_division)%> <%= link_to "Delete", admin_class_division_url(class_division), method: :delete%></td>
+	  </tr>
+	<% end %>
+</table>

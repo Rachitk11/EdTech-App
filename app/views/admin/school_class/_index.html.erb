@@ -1,0 +1,14 @@
+
+<table>
+	<caption></caption>
+	<tr>
+		<th>Class</th><th>School</th><th>Actions</th>
+	</tr>
+	<%locals[:school_classes].each do |school_class|%>
+	  <tr>
+	  	<td><%= school_class.class_number%></td>
+	  	<td><%= school_class.school.name %> </td>
+	    <td> <%= link_to "Edit", edit_admin_class_url(school_class, params: {school_id: school_class.school_id})%> <%= link_to "View", admin_class_url(school_class)%> <%= link_to "Delete", admin_class_url(school_class), method: :delete%></td>
+	  </tr>
+	<% end %>
+</table>

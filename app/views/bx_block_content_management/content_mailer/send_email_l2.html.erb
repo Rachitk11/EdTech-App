@@ -1,0 +1,6 @@
+<div>
+  <h1>Hey, <%= @l2_user_email.present? ? @l2_user_email : ""  %></h1>
+  <p>
+    <%= @l1_user&.email %> have  submitted content <a href="<%= @url %>"> <%= @content.name %></a> to review
+  </p>
+</div>

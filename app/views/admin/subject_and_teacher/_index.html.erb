@@ -1,0 +1,13 @@
+<table>
+	<caption></caption>
+	<tr>
+		<th>Subject</th><th>Teacher</th><th>Actions</th>
+	</tr>
+	<%locals[:subject_and_teacher]&.each do |subject_and_teacher|%>
+	  <tr>
+	  	<td><%= subject_and_teacher.subject.subject_name %></td>
+	  	<td><%= subject_and_teacher.account.email%></td>
+	    <td> <%#= link_to "Edit", edit_admin_class_division_url(class_division, params: {school_id: class_division.school_id})%> <%= link_to "View", admin_subject_and_teacher_url(subject_and_teacher)%> <%= link_to "Delete", admin_subject_and_teacher_url(subject_and_teacher), method: :delete%></td>
+	  </tr>
+	<% end %>
+</table>

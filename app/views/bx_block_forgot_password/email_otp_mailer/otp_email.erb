@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+
+    <% if @account.role&.name == "Publisher" %>
+      <p>Publication House Name - <%= @account.publication_house_name %></p>
+      <p>Phone Num. - <%= @account.full_phone_number %> </p><br>
+      <p>Email - <%= @account.email %></p>
+      <p>Your OTP code: <%= @otp.pin %></p>
+    <% elsif @account.role&.name == "Student" %>
+      <p>You are added as a Student</p>
+      <p>Student Unique Id - <%= @account.student_unique_id %></p> 
+      <p>School Name - <%= @account.school&.name %> <br></p>
+      <p>Name - <%= @account.first_name %><br> </p>
+      <p>Guardian Mail - <%= @account.guardian_email %></p> <br>
+      <p>Guardian Contact Num. - <%= @account.guardian_contact_no %></p>
+      <p>Your OTP code: <%= @account.pin %></p>
+
+    <% elsif @account.role&.name == "Teacher" %>
+      <p>You are added as a Teacher</p>
+      <p>Account ID - <%= @account.first_name %></p> 
+      <p>School Name - <%= @account.school&.name %> <br></p>
+      <p>Teacher Unique Id - <%= @account.teacher_unique_id %></p>
+      <p>Email - <%= @account.email %></p>
+      <p>Phone Num. - <%= @account.full_phone_number %></p>
+      <p>Your OTP code: <%= @account.pin %></p>
+
+    <% else %>
+      <p>You are added as a School Admin</p>
+      <p>Name - <%= @account.first_name %><br> </p>
+      <p>School Name - <%= @account.school&.name %> <br></p>
+      <p>Email - <%= @account.email %></p>
+      <p>Phone Num. - <%= @account.full_phone_number %> </p><br>
+      <p>Your OTP code: <%= @account.pin %></p>
+    <% end %>
+  </body>
+</html>
